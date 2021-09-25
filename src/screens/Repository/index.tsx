@@ -38,6 +38,7 @@ export function Repository() {
 
   function handleIssueNavigation(issueUrl: string) {
     // TODO - use Linking to open issueUrl in a browser
+    Linking.openURL(issueUrl);
   }
 
   return (
@@ -49,12 +50,14 @@ export function Repository() {
           <TextGroup>
             <TitleAnimation>
               {
-                // TODO - full name of the repository
+                // -TODO - full name of the repository
+                repository.full_name
               }
             </TitleAnimation>
 
             <Description numberOfLines={2}>{
-              //TODO - repository description
+              //-TODO - repository description
+              repository.description
             }</Description>
           </TextGroup>
         </RepoInfo>
@@ -62,21 +65,24 @@ export function Repository() {
         <RepoStats>
           <Stars>
             <StarsCounter>{
-              // TODO - repository stargazers count
+              // -TODO - repository stargazers count
+              repository.stargazers_count
             }</StarsCounter>
             <StarsText>Stars</StarsText>
           </Stars>
 
           <Forks>
             <ForksCounter>{
-              // TODO - repository forks count
+              // -TODO - repository forks count
+              repository.forks_count
             }</ForksCounter>
             <ForksText>Forks</ForksText>
           </Forks>
 
           <OpenIssues>
             <OpenIssuesCounter>{
-              // TODO - repository issues count
+              // -TODO - repository issues count
+              repository.open_issues_count
             }</OpenIssuesCounter>
             <OpenIssuesText>Issues{'\n'}Abertas</OpenIssuesText>
           </OpenIssues>
@@ -88,12 +94,13 @@ export function Repository() {
           showsVerticalScrollIndicator={false}
           renderItem={({ item: issue }) => (
             <Card
+              onPress={() => handleIssueNavigation(issue.html_url)}
               data={{
                 id: issue.id,
                 title: issue.title,
                 subTitle: issue.user.login,
               }}
-            // TODO - onPress prop calling 
+            // -TODO - onPress prop calling 
             />
           )}
         />

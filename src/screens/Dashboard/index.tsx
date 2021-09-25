@@ -28,11 +28,13 @@ export function Dashboard() {
 
   function handleAddRepository() {
     /**
-     * TODO: 
+     * -TODO
      * - call addRepository function sending inputText value;
      * - clean inputText value.
      */
     inputRef.current?.blur();
+    addRepository(inputText);
+    setInputText('');
   }
 
   function handleRepositoryPageNavigation(id: number) {
@@ -44,6 +46,7 @@ export function Dashboard() {
      *  repositoryId: id of the repository
      * })
      */
+    navigate('Repository', { repositoryId: id });
   }
 
   return (
@@ -58,10 +61,11 @@ export function Dashboard() {
               placeholder="Digite aqui 'usuário/repositório'"
               value={inputText}
               /**
-               * TODO - update inputText value when input text value 
+               * -TODO - update inputText value when input text value 
                * changes:
                * onChangeText={YOUR CODE HERE}
                */
+              onChangeText={setInputText}
               onSubmitEditing={handleAddRepository}
               returnKeyType="send"
               autoCapitalize='none'
@@ -71,8 +75,9 @@ export function Dashboard() {
             <InputButton
               testID="input-button"
               onPress={handleAddRepository}
+              disabled={!inputText}
             /**
-             * TODO - ensure to disable button when inputText is 
+             * -TODO - ensure to disable button when inputText is 
              * empty (use disabled prop to this):
              * disabled={CONDITION HERE}
              */
