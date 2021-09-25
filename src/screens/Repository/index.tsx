@@ -37,7 +37,7 @@ export function Repository() {
   const repository = findRepositoryById(repositoryId);
 
   function handleIssueNavigation(issueUrl: string) {
-    // TODO - use Linking to open issueUrl in a browser
+    // -TODO - use Linking to open issueUrl in a browser
     Linking.openURL(issueUrl);
   }
 
@@ -45,7 +45,7 @@ export function Repository() {
     <Background>
       <Container>
         <RepoInfo>
-          {/* <OwnerAvatar source={{ uri:  }} /> */}
+          <OwnerAvatar source={{ uri: repository.owner.avatar_url }} />
 
           <TextGroup>
             <TitleAnimation>
